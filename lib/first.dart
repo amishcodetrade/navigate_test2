@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:navigate_test2/ScreenArguments.dart';
 
-class Second extends StatelessWidget {
-  const Second({super.key});
-  static const routeName = '/thired';
+class First extends StatelessWidget {
+  final String Mail;
+  final String Pass;
+  First({required this.Mail, required this.Pass});
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
-
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text('first Screen'),
+        title: Text('second Screen'),
       ),
       body: Center(
         child: Column(
@@ -19,7 +17,12 @@ class Second extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              '${args.title}',
+              'User name : $Mail',
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+            ),
+            Text(
+              'Pass : $Pass',
               style: TextStyle(
                   fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),

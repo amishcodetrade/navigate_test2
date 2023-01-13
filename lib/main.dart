@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navigate_test2/second.dart';
-import 'package:navigate_test2/thired.dart';
 import 'package:navigate_test2/ScreenArguments.dart';
+import 'package:navigate_test2/first.dart';
+import 'package:navigate_test2/second.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        Thired.routeName:(context) => Thired()
-      },
+      routes: {Second.routeName: (context) => Second()},
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
-
     );
   }
 }
@@ -36,16 +33,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController _mail = new TextEditingController();
-  TextEditingController _pass = new TextEditingController();
-  TextEditingController _cmess = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title : Text('Homepage')
-      ),
+        appBar: AppBar(title: Text('Homepage')),
         body: Column(
           children: [
             SizedBox(
@@ -53,76 +44,78 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: _mail,
-                decoration: InputDecoration(
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: 'User id',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    )
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                obscureText: true,
-                controller: _pass,
-                decoration: InputDecoration(
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    )
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Route route = MaterialPageRoute(builder: (context) => Second(Mail: _mail.text, Pass: _pass.text));
-                  Navigator.pushReplacement(context, route);
-
-                },
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  width: MediaQuery.of(context).size.width,
-                  height: 30,
-                  child: Center(child: Text('second screen', style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),)),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
                   // Navigator.pushNamed(context, 'thiredScreen');
                   Navigator.pushNamed(
-                      context,
-                      Thired.routeName,
-                      arguments: ScreenArguments(
-                      'This message from first screen',
-                  ),
+                    context,
+                    Second.routeName,
+                    arguments: ScreenArguments(
+                      'This message from home screen',
+                    ),
                   );
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   height: 30,
-                  child: Center(child: Text('Thired screen', style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),)),
+                  child: Center(
+                      child: Text(
+                    'First screen',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => First(
+                            Mail: 'Amish@gmail.com', Pass: 'Amish@12345')),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  width: MediaQuery.of(context).size.width,
+                  height: 30,
+                  child: Center(
+                      child: Text(
+                    'second screen',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  width: MediaQuery.of(context).size.width,
+                  height: 30,
+                  child: Center(
+                      child: Text(
+                    'go to first screen',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
                 ),
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 }

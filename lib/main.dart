@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigate_test2/second.dart';
 import 'package:navigate_test2/thired.dart';
+import 'package:navigate_test2/ScreenArguments.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,15 +14,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        Thired.routeName:(context) => Thired()
+      },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
-      routes: {
-        '/thired' :(context) => Thired(Mess: 'this is thired screen')
-      },
+
     );
   }
 }
@@ -84,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Route route = MaterialPageRoute(builder: (context) => Second(Mail: _mail.text, Pass: _pass.text));
                   Navigator.pushReplacement(context, route);
+
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
@@ -95,26 +98,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: TextField(
-            //     controller: _cmess,
-            //     decoration: InputDecoration(
-            //         fillColor: Colors.grey.shade100,
-            //         filled: true,
-            //         hintText: 'send custom message to third screen',
-            //         border: OutlineInputBorder(
-            //             borderRadius: BorderRadius.circular(10)
-            //         )
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Route route = MaterialPageRoute(builder: (context) => Thired(Mess: 'this message from first screen'));
-                  Navigator.pushReplacement(context, route);
+                  // Navigator.pushNamed(context, 'thiredScreen');
+                  Navigator.pushNamed(
+                      context,
+                      Thired.routeName,
+                      arguments: ScreenArguments(
+                      'This is message frome first screen',
+                  ),
+                  );
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),

@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       Thired.routeName,
                       arguments: ScreenArguments(
-                      'This is message frome first screen',
+                      'This message from first screen',
                   ),
                   );
                 },

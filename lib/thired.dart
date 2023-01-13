@@ -30,7 +30,7 @@ class _ThiredState extends State<Thired> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(args.title),
+            Text('${args.title}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),
           ],
 
         ),

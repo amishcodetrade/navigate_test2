@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navigate_test2/ScreenArguments.dart';
-import 'package:navigate_test2/first.dart';
-import 'package:navigate_test2/second.dart';
+import 'package:navigate_test2/screens/ScreenArguments.dart';
+import 'package:navigate_test2/screens/first_screen.dart';
+import 'package:navigate_test2/screens/second_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {Second.routeName: (context) => Second()},
+      routes: {FirstScreen.routeName: (context) => FirstScreen()},
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -36,10 +36,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Homepage')),
+        appBar: AppBar(
+          title: const Text('Homepage'),
+          centerTitle: true,
+        ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -49,17 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Navigator.pushNamed(context, 'thiredScreen');
                   Navigator.pushNamed(
                     context,
-                    Second.routeName,
+                    FirstScreen.routeName,
                     arguments: ScreenArguments(
-                      'This message from home screen',
-                    ),
+                        title: 'This message from home screen',
+                        isFirstScreen: false),
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   height: 30,
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     'First screen',
                     style: TextStyle(
@@ -77,15 +83,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => First(
-                            Mail: 'Amish@gmail.com', Pass: 'Amish@12345')),
+                        builder: (context) => SecondScreen(
+                              Mail: 'Amish@gmail.com',
+                              Pass: 'Amish@12345',
+                            )),
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   height: 30,
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     'second screen',
                     style: TextStyle(
@@ -99,12 +108,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    FirstScreen.routeName,
+                    arguments: ScreenArguments(title: '', isFirstScreen: true),
+                  );
+                },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   height: 30,
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     'go to first screen',
                     style: TextStyle(

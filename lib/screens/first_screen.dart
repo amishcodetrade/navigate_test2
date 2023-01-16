@@ -3,7 +3,7 @@ import 'package:navigate_test2/screens/ScreenArguments.dart';
 import 'package:navigate_test2/screens/second_screen.dart';
 
 class FirstScreen extends StatelessWidget {
-  FirstScreen({super.key});
+  const FirstScreen({super.key});
   static const routeName = '/first';
 
   @override
@@ -23,7 +23,7 @@ class FirstScreen extends StatelessWidget {
                   Text(
                     "${args.title} ?? ''",
                     // "",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.red),
@@ -46,10 +46,11 @@ class FirstScreen extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   height: 30,
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     'go to Second Screen',
                     style: TextStyle(

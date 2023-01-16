@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {FirstScreen.routeName: (context) => FirstScreen()},
+      routes: {FirstScreen.routeName: (context) => const FirstScreen()},
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -51,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.pushNamed(context, 'thiredScreen');
                   Navigator.pushNamed(
                     context,
                     FirstScreen.routeName,

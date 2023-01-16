@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import '../main.dart';
@@ -8,7 +10,7 @@ class SecondScreen extends StatelessWidget {
   bool? isThirdButton;
 
   SecondScreen(
-      {required this.Mail, required this.Pass, this.isThirdButton = false});
+      {super.key, required this.Mail, required this.Pass, this.isThirdButton});
 
   @override
   Widget build(BuildContext context) {
